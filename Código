@@ -1,0 +1,26 @@
+from math import ceil
+print("Olá, Seja Bem-Vindo a casa de Tinta Cor.")
+area = float(input('Informe a área em(m2): '))
+litros = area / 6  
+opcoes_pagamento = int(input('''Formas de Compra:
+[1] Comprar apenas em latas de 18L.
+[2] Comprar apenas em galôes de 3,6L.
+[3] Comprar misturando, as latas e os galôes, com 10% de desconto.
+Digite a forma de Compra:
+ '''))
+if opcoes_pagamento == 1:
+    litro_metro = ceil(area / 6)
+    num_lata = ceil(litro_metro / 18)
+    custo = num_lata * 80
+    print("Será necessário {} latas de tinta, custará R${}".format(num_lata, custo))
+elif opcoes_pagamento == 2:
+    litro_metro = ceil(area / 6)
+    num_lata = ceil(litro_metro / 3.6)
+    custo = num_lata * 25
+    print('Sera necessário {} latas de tinta, e custará R${}.'.format(num_lata, custo))
+else:
+    num_lata2 = (litros // 18)
+    custo2 = ceil(num_lata2 * 80)
+    num_lata = ceil(litros % 3.6)
+    custo = ceil(num_lata * 25)
+    print("Será necessário {} latas e {} galôes. Custará R${}.".format(num_lata2, num_lata, (custo+custo2)*0.9))
